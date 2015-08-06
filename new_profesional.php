@@ -1,30 +1,34 @@
 <?php
-//crear formulario de alta del nuevo profesional
+require_once("model.php");
+require_once ("usuarioModel.php");
+require_once ("tipoDomicilioModel.php");
+
+$usuario=new usuarioModel();
+$usuario->new_usuario($_POST["usuario"],$_POST["clave"],$_POST["mail"]);
+$idusuario = $usuario->ultimo_id();
+
+$profesional=new profesionalModel();
+$profesional->new_profesional($_POST["apellido"],$_POST["nombre"],$_POST["telefono"],$idusuario,
+                            $idusuario,$_POST['observaciones']);
+
+//guardar domicilio: campos idprofesional,idtipodom,direccion,idlocalidad
+$domicilio= new domicilioModel();
+
+    $domicilios->new_domicilio($_POST['idprofesional'], $_POST['idtipodom'], $_POST['direccion'], $_POST['idlocalidad']);
+    $domicilios->new_domicilio($idprofesional, $idtipodom, $direccion, $idlocalidad);
+
 ?>
+
 <html>
 <head>
 <title>Nuevo Profesional</title>
 </head>
 <body>
- <h1>Nuevo Profesional</h1>
-    <form action="" method="POST">
-    	<p>
-    	<input type="text" name="nombre" placeholder="Ingrese nombre"/>
-    	</p>
-    	<p>
-    	<input type="text" name="apellido" placeholder="Ingrese apellido"/>
-    	</p>
-    	<p>
-    	<input type="text" name="telefono" placeholder="Ingrese telefono"/>
-    	<p>
-    	<input type="text" name="observaciones" placeholder="Ingrese observaciones"/>
-    	</p>
-    	<p>
-    	<input type="text" name="" placeholder="IngreseIngrese"/>
-    	</p>
-    	<p>
-    	<input type="text" name="" placeholder="Ingrese"/>
-    	</p>
-    </form>
+ <?php if($result):
+     echo 'El Profesional se ha creado satisfactoriamente';
+     else:
+         echo 'Error al crear el Profesional';
+    endif;
+?>
 </body>
 </html>

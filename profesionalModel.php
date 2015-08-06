@@ -15,7 +15,14 @@ class profesionalModel extends Model
 
     }
 
-
+     public function new_profesional($apellido, $nombre, $telefono, $idusuario, $observaciones){
+        
+        $result= $this->_db->query("Insert into profesionales (apellido, nombre, telefono, idusuario, observaciones)"
+                                    . " values('$apellido', '$nombre', '$telefono', '$idusuario', '$observaciones')"
+                                 );
+     
+        return $result;
+    }
 
     public function get_profesionales()
 
