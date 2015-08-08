@@ -14,7 +14,7 @@
 <title>Inicio</title>
 </head>
 <body>
-    <p><a href="./register.php">Profesional</a></p>
+    <p><a href="./register.php">Nuevo Profesional</a></p>
 	<table>
 		<thead>Profesionales</thead>
 		<tbody>
