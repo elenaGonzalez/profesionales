@@ -34,6 +34,7 @@ class localidadModel extends Model
     public function get_ciudadesDeprovincias($id)
     {
         $result = $this->_db->query('Select provincia_id, ciudad From localidades where $id = provincia_id');
+        return $result;
     }
 
 }
