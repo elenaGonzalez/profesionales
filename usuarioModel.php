@@ -21,7 +21,11 @@ class usuarioModel extends Model{
 
     public function ultimo_id(){
         $result = $this->_db->query("SELECT MAX(id) AS id FROM usuarios");
-        return $result;
+        $id_usuario = null;
+        foreach ($result as $r){
+            $id_usuario = $r['id'];
+        }
+        return $id_usuario;
     }
 
         public function get_usuarios()

@@ -2,9 +2,12 @@
 require_once("model.php");
 require_once ("provinciaModel.php");
 require_once ("tipoDomicilioModel.php");
+require_once ("localidadModel.php");
 
 $provincia = new provinciaModel();
 $provincias = $provincia->get_provincias();
+$localidad = new localidadModel();
+$localidades = $localidad->get_localidades();
 
 $tipo = new tipoDomicilioModel();
 $tipos = $tipo->get_tipo_domicilios();
@@ -55,7 +58,7 @@ $tipos = $tipo->get_tipo_domicilios();
             </select>
     	</p>
         <p>
-            <select>
+            <select name="provincia">
                 <?php                
                 foreach ($provincias as $key => $provincia) {
                 ?>
@@ -64,7 +67,13 @@ $tipos = $tipo->get_tipo_domicilios();
             </select>
             <?php //debo hacer un select asociado para traer todas las ciudades de la provincia seleccionada ?>
          <p>
-    	<input type="text" name="localidad" placeholder="Ciudad"/>
+        <select name="localidad">
+                <?php                
+                foreach ($localidades as $key => $localidad) {
+                ?>
+                <option value="<?php echo $key;?>"><?php echo $localidad['ciudad'];?></option>
+                <?php }?>
+            </select>
          </p>
          <p>
             <textarea rows="10" cols="30" name="observaciones" placeholder="Observaciones"></textarea>

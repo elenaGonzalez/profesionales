@@ -34,7 +34,7 @@ class domicilioModel extends Model
     public function new_domicilio($idprofesional, $idtipodom, $direccion, $idlocalidad){
         $result= $this->_db->query("Insert into domicilios (idprofesional,idtipodom,direccion,idlocalidad)"
                 . " values('$idprofesional','$idtipodom','$direccion','$idlocalidad')");
-     
+        
         return $result;
     }
 

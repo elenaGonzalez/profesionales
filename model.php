@@ -1,39 +1,23 @@
 <?php
-	require_once "config.php";
 
+require_once "config.php";
 
-
-class Model
-
-
-{
+class Model {
 
     protected $_db;
 
-
-
-    public function __construct()
-
-    {
+    public function __construct() {
 
         $this->_db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
+        if ($this->_db->connect_errno) {
 
+            echo "Fallo al conectar a MySQL: " . $this->_db->connect_error;
 
-        if ( $this->_db->connect_errno )
-
-        {
-
-            echo "Fallo al conectar a MySQL: ". $this->_db->connect_error;
-
-            return;    
-
+            return;
         }
 
-
-
         $this->_db->set_charset(DB_CHARSET);
-
     }
 
 }
