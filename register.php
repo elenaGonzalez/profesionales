@@ -15,6 +15,19 @@ $tipos = $tipo->get_tipo_domicilios();
 <html>
 <head>
 <title>Nuevo Profesional</title>
+<script language="javascript" src="jquery.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+   $("#provincia").change(function () {
+           $("#provincia option:selected").each(function () {
+            id_provincia = $(this).val();
+            $.post("ajax.php", { id_provincia: id_provincia }, function(data){
+                $("#localidad").html(data);
+            });            
+        });
+   })
+});
+</script>
 </head>
 <body>
     <h1>Datos del Nuevo Usuario</h1>
@@ -58,16 +71,16 @@ $tipos = $tipo->get_tipo_domicilios();
             </select>
     	</p>
         <p>
-            <select name="provincia">
+            <select name="provincia" id="provincia">
                 <?php                
                 foreach ($provincias as $key => $provincia) {
                 ?>
-                <option value="<?php echo $key;?>"><?php echo $provincia['nombre'];?></option>
+                <option value="<?php echo $provincia['id'];?>"><?php echo $provincia['nombre'];?></option>
                 <?php }?>
             </select>
             <?php //debo hacer un select asociado para traer todas las ciudades de la provincia seleccionada ?>
          <p>
-        <select name="localidad">
+        <select name="localidad" id="localidad">
                 <?php                
                 foreach ($localidades as $key => $localidad) {
                 ?>
