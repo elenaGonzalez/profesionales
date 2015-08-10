@@ -2,18 +2,11 @@
 require_once "Model.php";
 
 class usuarioModel extends Model{    
-    private $usuario;
-    private $clave;
-    private $mail;
-    private $rol;
 
-    public function __construct()
+    public function __construct($usuario=null, $clave=null, $mail=null)
     {
        parent::__construct();
-    }
-
-    public function new_usuario($usuario, $clave, $mail){
-        $rol= 'usuario';
+       $rol= 'usuario';
         $result= $this->_db->query("Insert into usuarios (usuario, clave, mail, rol) values('$usuario','$clave','$mail','$rol')");
      
         return $result;

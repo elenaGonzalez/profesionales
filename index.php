@@ -23,6 +23,7 @@
 				<th>Apellido</th>
 				<th>Observacion</th>
 				<th>Tel</th>
+                                <?php //preguntar por rol del usuario logueado?>
 			</tr>
 			
 			<?php 

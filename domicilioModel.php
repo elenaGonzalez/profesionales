@@ -7,12 +7,15 @@ class domicilioModel extends Model
 
 {    
 
-    public function __construct()
+    public function __construct($idprofesional=null,$idtipodom=null,$direccion=null,$idlocalidad=null)
 
     {
 
         parent::__construct();
-
+        $result= $this->_db->query("Insert into domicilios (idprofesional,idtipodom,direccion,idlocalidad)"
+                . " values('$idprofesional','$idtipodom','$direccion','$idlocalidad')");
+        
+        return $result;
     }
 
 
@@ -30,13 +33,5 @@ class domicilioModel extends Model
         return $domicilios;
 
     }
-    //arreglar: necesito poder guardar un array de domicilios 
-    public function new_domicilio($idprofesional, $idtipodom, $direccion, $idlocalidad){
-        $result= $this->_db->query("Insert into domicilios (idprofesional,idtipodom,direccion,idlocalidad)"
-                . " values('$idprofesional','$idtipodom','$direccion','$idlocalidad')");
-        
-        return $result;
-    }
-
 }
 ?>

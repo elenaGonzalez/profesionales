@@ -7,12 +7,13 @@ class especialidadModel extends Model
 
 {    
 
-    public function __construct()
+    public function __construct($esp_nombre=null)
 
     {
 
         parent::__construct();
-
+        $result= $this->_db->query("Insert into especialidades (esp_nombre) values('$esp_nombre')");
+        return $result;
     }
 
 
