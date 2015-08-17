@@ -1,15 +1,4 @@
-﻿<?php  
-
-     require_once "profesionalModel.php";
-
-
-
-    $profesionalModel = new profesionalModel();
-
-    $profesionales = $profesionalModel->get_profesionales();
-
-?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -19,7 +8,7 @@
     <!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>..:: Profesionales  ::.. - Home</title>
+	<title>..:: Profesionales ::.. - Contacto</title>
 	<meta name="description" content="Free Html5 Templates and Free Responsive Themes Designed by Kimmy | zerotheme.com">
 	<meta name="author" content="www.zerotheme.com">
 	
@@ -80,11 +69,11 @@
 	<div class="wrap-nav zerogrid">
 <div class="menu">
 			<ul>
-				<li class="current"><a href="index.php">Home</a></li>
-				<li class="first"><a href="profesionales.php">Profesionales</a></li>
+				<li class="first"><a href="index.php">Home</a></li>
+				<li class="last"><a href="profesionales.php">Profesionales</a></li>
 				<li><a href="servicios.php">Servicios</a></li>
 				<li><a href="qsomos.php">Quienes Somos</a></li>
-				<li class="last"><a href="contacto.php">Contacto</a></li>
+				<li class="current"><a href="contacto.php">Contacto</a></li>
 			</ul>
 		</div>
 		
@@ -99,7 +88,7 @@
 				<option value="contacto.php">Contacto</option>
 			</select>
 		</div>
-	<div class="share">
+				<div class="share">
 			<ul>
 				<li><a href="#"><img src="images/rss-icon.png" title="RSS"/></a></li>
 				<li><a href="#"><img src="images/twitter-icon.png" title="Twitter"/></a></li>
@@ -112,122 +101,40 @@
 	</div>
 </nav>
 
-<div class="featured">
-	<div class="wrap-featured zerogrid">
-		<div class="slider">
-			<div class="rslides_container">
-				<ul class="rslides" id="slider">
-					<li><img src="images/slider1.jpg"/></li>
-					<li><img src="images/slider2.jpg"/></li>
-					<li><img src="images/slider3.jpg"/></li>
-					<li><img src="images/slider4.jpg"/></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!--------------Content--------------->
 <section id="content">
 	<div class="wrap-content zerogrid">
-		<div class="row block01">
-			<div class="col-full">
+		<div class="row block">
+			<div id="main-content" class="col-2-3">
 				<div class="wrap-col">
-					<h2>Bienvenido a Profesionales  !</h2>
-					<p>El sitio mas completo para publicar, encontrar servicio y lograr lo que deseas son perder tiempo y en cualquier momento. </p>
-					<p>
-					<p><a href="./register.php">Nuevo Profesional</a></p>
-	<table>
-		<thead>Profesionales</thead>
-		<tbody>
-			<tr>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Observacion</th>
-				<th>Tel</th>
-                                <?php //preguntar por rol del usuario logueado?>
-			</tr>
-			
-			<?php 
-				foreach ($profesionales as $profesional) {
-				echo "<tr>";
-					echo "<td>".$profesional['nombre']."</td>";
-				
-					echo "<td>".$profesional['apellido']."</td>";
-					
-					echo "<td>".$profesional['observaciones']."</td>";
-				
-					echo "<td>".$profesional['telefono']."</td>";
-
-					echo "</tr>";
-					
-				}
-
-			?>
-			</tr>
-		</tbody>
-	</table>
-
-					</p>
+					<article>
+						<h2><a href="#">Contact Us</a></h2>
+						
+						<div class="comment">
+							Your email address will not be published. Required fields are marked *
+							<form>
+								<div><input type="text" name="name" id="name"> Name *</div>
+								<div><input type="email" name="email" id="email"> Email *</div>
+								<div><input type="url" name="website" id="website"> Website</div>
+								<div><textarea rows="10" name="comment" id="comment"></textarea></div>
+								<div><input type="submit" name="submit" value="Submit"></div>
+							</form>
+						</div>
+					</article>
 				</div>
 			</div>
-		</div>
-		<div class="row block02">
-			<div class="col-1-3">
-				<div class="wrap-col box1">
-					<img src="images/icon1.png" />
-					<h2>Usuario premiun </h2>
-					<p>Descripcion.</p>
-					<a href="#">[ More ]</a>
-				</div>
-			</div>
-			<div class="col-1-3">
-				<div class="wrap-col box2">
-					<img src="images/icon2.png" />
-					<h2>Usuario vip </h2>
-					<p>Descripcion.</p>
-					<a href="#">[ More ]</a>
-				</div>
-			</div>
-			<div class="col-1-3">
-				<div class="wrap-col box3">
-					<img src="images/icon3.png" />
-					<h2>&nbsp;</h2>
-					<p>Descripcion.</p>
-					<a href="#">[ More ]</a>
-				</div>
-			</div>
-		</div>
-		<div class="row block03">
-			<div class="col-2-3">
+			<div id="sidebar" class="col-1-3">
 				<div class="wrap-col">
-					<h2>Quienes Somos </h2>
-					<img src="images/about.jpg" />
-					<p>Somos la puerta al mundo del avance, el crecimiento, la oportunidad y el desarrollo...Somos realizadores de sueños.[...]</p>
-				</div>
-			</div>
-			<div class="col-1-3">
-				<div class="wrap-col">
-					<h2>Servicios</h2>
-					<ul>
-						<li><a href="#">Publica tu servicio.</a></li>
-						<li><a href="#">Promociona tu producto.</a></li>
-						<li><a href="#">Haz tu proyecto realidad.</a></li>
-						<li><a href="#">Logra que el mundo te conozca.</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="row block04">
-			<div class="col-full">
-				<div class="wrap-col">
-					<h2>Empresas amigas. </h2>
-					<div class="partners">
-						<a><img src="images/partner01.jpg" /></a>
-						<a><img src="images/partner02.jpg" /></a>
-						<a><img src="images/partner03.jpg" /></a>
-						<a><img src="images/partner04.jpg" /></a>
-						<a><img src="images/partner05.jpg" /></a>
+					<div class="box">
+						<div class="heading"><h2>Find Us</h2></div>
+						<div class="content">
+							<img src="images/map.png"/>
+							<p>Petru Zadnipru 15/2 Chisinau 2044, Republic of Moldova</p>
+							<p>Freephone : +1 800 445 7880</p>
+							<p>Telephone : +1 800 995 6880</p>
+							<p>Fax : +1 800 465 1990</p>
+							<p>Email : zerotheme@demolink.com</p>
+						</div>
 					</div>
 				</div>
 			</div>
