@@ -1,7 +1,10 @@
 ﻿<?php  
 
      require_once "profesionalModel.php";
-
+     require_once("sesion.php");
+ 
+     $sesion = new sesion();
+     $usuario = $sesion->get("usuario");
 
 
     $profesionalModel = new profesionalModel();
@@ -136,42 +139,11 @@
 					<h2>Bienvenido a Profesionales  !</h2>
 					<p>El sitio mas completo para publicar, encontrar servicio y lograr lo que deseas son perder tiempo y en cualquier momento. </p>
 					<p>
-					<p><a href="./register.php">Nuevo Profesional</a></p>
-	<table>
-		<thead>Profesionales</thead>
-		<tbody>
-			<tr>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Observacion</th>
-				<th>Tel</th>
-                                <?php //preguntar por rol del usuario logueado?>
-			</tr>
-			
-			<?php 
-				foreach ($profesionales as $profesional) {
-				echo "<tr>";
-					echo "<td>".$profesional['nombre']."</td>";
-				
-					echo "<td>".$profesional['apellido']."</td>";
-					
-					echo "<td>".$profesional['observaciones']."</td>";
-				
-					echo "<td>".$profesional['telefono']."</td>";
 
-					echo "</tr>";
-					
-				}
-
-			?>
-			</tr>
-		</tbody>
-	</table>
-
-					</p>
 				</div>
 			</div>
 		</div>
+             
 		<div class="row block02">
 			<div class="col-1-3">
 				<div class="wrap-col box1">

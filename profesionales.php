@@ -2,7 +2,23 @@
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<?php  
+
+     require_once "profesionalModel.php";
+     require_once("sesion.php");
+ 
+     $sesion = new sesion();
+     $usuario = $sesion->get("usuario");
+
+
+    $profesionalModel = new profesionalModel();
+
+    $profesionales = $profesionalModel->get_profesionales();
+
+?>
+
+<html lang="en"> <!--<![endif]-->
 <head>
 
     <!-- Basic Page Needs
@@ -108,29 +124,71 @@
 			<div id="main-content" class="col-2-3">
 				<div class="wrap-col">
 					<article>
-						<h2><a href="#">Sed accumsan libero quis mi commodo et suscipit</a></h2>
-						<img src="images/blog01.jpg"/>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Proin non enim odio. Proin vitae turpis libero, eget feugiat enim. [...]</p>
-						<div class="more"><a class="comments" href="#">02 comments</a><a class="button" href="#">Read more</a></div>
-					</article>
-					<article>
-						<h2><a href="#">Sed accumsan libero quis mi commodo et suscipit</a></h2>
-						<img src="images/blog02.jpg"/>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Proin non enim odio. Proin vitae turpis libero, eget feugiat enim. [...]</p>
-						<div class="more"><a class="comments" href="#">03 comments</a><a class="button" href="#">Read more</a></div>
-					</article>
-					<article>
-						<h2><a href="#">Sed accumsan libero quis mi commodo et suscipit</a></h2>
-						<img src="images/blog03.jpg"/>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Proin non enim odio. Proin vitae turpis libero, eget feugiat enim. [...]</p>
-						<div class="more"><a class="comments" href="#">12 comments</a><a class="button" href="#">Read more</a></div>
-					</article>
-					<article>
-						<h2><a href="#">Sed accumsan libero quis mi commodo et suscipit</a></h2>
-						<img src="images/blog04.jpg"/>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Proin non enim odio. Proin vitae turpis libero, eget feugiat enim. [...]</p>
-						<div class="more"><a class="comments" href="#">05 comments</a><a class="button" href="#">Read more</a></div>
-					</article>
+                                            <table>
+		<thead>Profesionales</thead>
+		<tbody>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Observacion</th>
+				<th>Tel</th>
+                                <th>Acciones<th>
+                                <?php //preguntar por rol del usuario logueado?>
+			</tr>
+                      	<?php 
+                  if( $usuario == false )  {
+             // si no se ha iniciado sesión redirecciona a la pagina login.php
+            ?>
+			<?php 
+                                echo "<p>Bienvenido usuario anonimo</p>";
+				foreach ($profesionales as $profesional) {
+				echo "<tr>";
+					echo "<td>".$profesional['nombre']."</td>";
+				
+					echo "<td>".$profesional['apellido']."</td>";
+					
+					echo "<td>".$profesional['observaciones']."</td>";
+				
+					echo "<td>".$profesional['telefono']."</td>";
+                                        
+                                        echo "<td><a href='profesional.php'>Leer mas</a></td>";
+
+					echo "</tr>";
+					
+				}
+
+			?>
+			</tr>
+		</tbody>
+	</table>
+                      <?php } else {
+   // Aquí va el contenido de la pagina qu se mostrara en caso de que se haya iniciado sesion 
+                          echo "<p>Bienvenido usuario logueado</p>";
+                           /* if($usuario->rol == 'admin'){ ?>
+                                <p><a href="./register.php">Nuevo Profesional</a></p>
+                         <?php }*/
+				foreach ($profesionales as $profesional) {
+				echo "<tr>";
+					echo "<td>".$profesional['nombre']."</td>";
+				
+					echo "<td>".$profesional['apellido']."</td>";
+					
+					echo "<td>".$profesional['observaciones']."</td>";
+				
+					echo "<td>".$profesional['telefono']."</td>";
+
+					echo "</tr>";
+					
+				}
+                                 ?><a href="cerrarsesion.php"> Cerrar Sesion </a>
+                      <?php }
+			?>                 
+		</p>
+				</div>
+			</div>
+		</div>
+             
+						
 					
 					<ul id="pagi">
 						<li><a class="current" href="#">1</a></li>
